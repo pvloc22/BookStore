@@ -1,0 +1,191 @@
+@charset "UTF-8";
+#main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+
+/*thanh search*/
+#main form {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  margin-right: 30px;
+  display: flex;
+  justify-content: center; }
+
+form.form-search input[type=text] {
+  padding: 10px;
+  font-size: 24px;
+  border: 1px solid grey;
+  font-style: italic;
+  font-weight: 500;
+  float: left;
+  width: 72%;
+  background-color: #FFFAF0; }
+
+form.form-search button {
+  float: left;
+  width: 7%;
+  max-width: 6%;
+  padding: 10px;
+  background-color: #6FBFF1;
+  color: white;
+  font-size: 24px;
+  border: 1px solid grey;
+  border-left: none;
+  /* Prevent double borders */
+  cursor: pointer;
+  border-top-right-radius: 22px;
+  border-bottom-right-radius: 22px; }
+
+/*a->z z->a*/
+.select-type select {
+  border-top-left-radius: 10px;
+  /* Độ cong góc trái trên của select */
+  border-bottom-left-radius: 10px;
+  /* Độ cong góc dưới trái của select */
+  /* Các thuộc tính khác cho viền và nền của select */
+  border: 1px solid #ccc;
+  padding: 5px;
+  background-color: #fff; }
+
+.select-type select {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  border: 1px solid #ccc;
+  padding: 15px; }
+
+#type {
+  background-color: #6FBFF1;
+  color: khaki;
+  font-weight: bold;
+  font-size: 20px; }
+
+.nav-link.active {
+  color: coral; }
+
+.Client {
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-left: 4px;
+  margin-right: 4px; }
+
+tr th {
+  padding-bottom: 15px;
+  padding-left: 5px;
+  background-color: white;
+  font-weight: 500;
+  font-size: 20px;
+  padding-top: 12px;
+  border-bottom: 1px solid #C5EAFA; }
+
+tr td {
+  padding-bottom: 10px;
+  background-color: white;
+  padding-left: 5px;
+  padding-top: 7px;
+  font-size: 15px;
+  font-weight: 500; }
+
+tr:hover td {
+  border-top: 2px solid blue;
+  border-bottom: 2px solid blue; }
+
+tr:hover .RowFirst {
+  border-left: 2px solid blue; }
+
+tr:hover .RowLast {
+  border-right: 2px solid blue; }
+
+tr:hover td {
+  background-color: #FFFFEB;
+  font-size: 16px; }
+
+tr td a {
+  text-decoration: none;
+  font-weight: 600; }
+
+tr td a:hover {
+  color: coral; }
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 55px;
+  height: 33px; }
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0; }
+
+/* Slider styles */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s; }
+
+/* Slider round styles */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s; }
+
+/* Checked state styles */
+input:checked + .slider {
+  background-color: #2196F3; }
+
+input:checked + .slider:before {
+  transform: translateX(26px); }
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px; }
+
+.slider.round:before {
+  border-radius: 50%; }
+
+/*vùng chứa tag add new client*/
+.add-client {
+  margin-top: 20px;
+  margin-right: 50px;
+  display: flex;
+  justify-content: flex-end; }
+
+/* tag add client */
+.add-client a {
+  font-size: 20px;
+  color: #6996F6;
+  font-weight: 600;
+  font-style: italic; }
+
+.add-client a:hover {
+  color: #FEFBBE;
+  font-size: 25px; }
+
+/*vùng chứa tag add new librarian*/
+.add-librarian {
+  margin-top: 20px;
+  margin-right: 50px;
+  display: flex;
+  justify-content: flex-end; }
+
+/* tag add librarian */
+.add-librarian a {
+  font-size: 20px;
+  color: #6996F6;
+  font-weight: 600;
+  font-style: italic; }
+
+.add-librarian a:hover {
+  color: #FEFBBE;
+  font-size: 25px; }

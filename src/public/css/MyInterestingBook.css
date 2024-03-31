@@ -1,0 +1,56 @@
+@charset "UTF-8";
+#main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+
+/* vùng chứa danh sách*/
+.book-interesting {
+  padding-top: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  border: 5px double #FF9356;
+  border-radius: 17px;
+  margin-top: 51px;
+  margin-left: 12px;
+  margin-right: 16px;
+  background-color: white; }
+
+/* danh sách các ô sách*/
+.list-book {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 4px;
+  padding-right: 4px; }
+
+.list-book img {
+  width: 10em;
+  height: 14em; }
+
+/* các ô sách */
+.book-block {
+  border: 3px solid #69b7f6;
+  border-radius: 7px;
+  background-color: #b3e6f5;
+  margin-left: 5px;
+  margin-bottom: 8px;
+  margin-top: 7px;
+  display: flex;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  flex-direction: column; }
+
+.book-block:hover {
+  border: 4px solid  coral;
+  border-radius: 6px; }
+
+/* vùng chứa các thông tin sách*/
+.book-information {
+  display: flex;
+  flex-direction: column; }
+
+/* vùng chứa thông tin sách*/
+.book-detail {
+  display: flex;
+  justify-content: center; }

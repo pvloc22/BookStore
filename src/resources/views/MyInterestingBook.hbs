@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/MyInterestingBook.css">
+
+    <title>My Interesting book</title>
+
+</head>
+
+<body>
+    <div id="main">
+        <div class="book-interesting">
+            <div class="list-book">
+
+            {{#each data}}
+                <div class="book-block">
+                    <a href="/home/{{this.BID}}/{{../URL_AUTH.pass}}"><img src='/{{this.PATHIMAGE}}'></a>
+                    <div class="book-information">
+                        <div class="book-detail">{{this.TITTLE}}</div>
+                        <div class="book-detail">{{this.AUTHOR}}</div>
+                    </div>
+                </div>
+            {{/each}} 
+  
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

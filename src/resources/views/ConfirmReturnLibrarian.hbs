@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/ConfirmReturnLibrarian.css">
+
+    <title>ConfirmReturnLibrarian</title>
+</head>
+
+<body>
+    <div id="main">
+        <div class="Transaction">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Transaction ID: <span>{{data.[0].TID}}</span></li>
+                <li class="list-group-item list-group-item-light">Client ID: <span>{{data.[0].CLI_ID}}</span></li>
+                <li class="list-group-item list-group-item-light">Phone Number: <span>{{data.[0].PHONENUMBER}}</span></li>
+                <li class="list-group-item list-group-item-light">Total price: <span>{{data.[0].TOTALPRICE}}</span></li>
+                <li class="list-group-item list-group-item-light">Borrow Date: <span>{{data.[0].BORROWEDDATE}}</span></li>
+                <li class="list-group-item list-group-item-light">Return Date: <span>{{data.[0].RETURNINGDATE}}</span></li>
+                <li class="list-group-item list-group-item-light">Quantity: <span>{{data.[0].QUANTITY}}</span></li>
+
+                {{#each data}}
+                    <li class="list-group-item list-group-item-light">Book Borrow: <span>{{this.TITTLE}}</span></li>
+                {{/each}}
+            </ul>
+            <div class="Confirm">
+                <button class="button-confirm" onclick="f_fetchConfirm('{{data.[0].TID}}', '{{URL_AUTH.pass}}')"> <i class="fa fa-cube"></i><span
+                        class="add-to-cart">Confirm</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function f_fetchConfirm(TID, token) {
+            const dataObj = {
+                tid: TID.split(',')[0],
+            }
+
+            const options = {
+                method: 'PUT',
+                headers: {
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataObj)
+            }
+            const URL = '/ConfirmReturnLibrarian/confirm'
+
+            return fetch(URL, options)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.err) window.location = ('/erro')
+                    else {
+                        alert('success confirm')
+                        window.location = ('/DashboardLibrarian/' + token)
+                    }
+                })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+@charset "UTF-8";
+.login-container {
+  background-color: whitesmoke;
+  width: 565px;
+  /* Đặt chiều rộng thành 200 pixel */
+  height: 687px;
+  margin-top: 20%; }
+
+img {
+  float: right; }
+
+.my-book-shelf {
+  display: flex;
+  justify-content: center;
+  font-size: 29px;
+  font-style: oblique; }
+
+.book-effect {
+  color: coral; }
+
+.shelf-effect {
+  word-spacing: 2px; }
+
+.welcome {
+  margin-top: 50px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center; }
+
+.require-to-login {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  color: #B6CDD8; }
+
+/* tạo form */
+.input-form {
+  margin-top: 28px;
+  font-size: 23px;
+  margin-left: 35px; }
+
+.input-form input {
+  margin-left: 17px;
+  margin-top: 12px;
+  width: 86%;
+  height: 27px;
+  font-size: 22px; }
+
+/* lưu / quên mật khẩu*/
+.about-password {
+  margin-top: 16px;
+  margin-left: 33px;
+  font-size: 20px; }
+
+/* quên mật khẩu */
+.about-password a {
+  margin-top: 16px;
+  margin-left: 183px;
+  font-size: 20px;
+  text-decoration: underline; }
+
+.about-password a:hover {
+  color: #9e7456; }
+
+/*button đăng nhập*/
+.button-login input {
+  margin-top: 26px;
+  width: 82%;
+  height: 43px;
+  background-color: #785FF8;
+  color: aliceblue;
+  font-size: 22px;
+  font-weight: bold; }
+
+.button-login {
+  text-align: center; }
+
+/* đăng kí*/
+.register {
+  margin-top: 20px;
+  margin-left: 21px; }
+
+.register a:hover {
+  color: #9e5656; }

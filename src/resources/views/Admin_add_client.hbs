@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/Admin_add_client.css">
+
+    <title>Admin add Client</title>
+</head>
+
+<body>
+
+    <form class="login-container"  id="register-form">
+        <div class="information-login">
+            <div id="username-input" class="input-form">
+                <label for="username">Username</label> <br>
+                <input type="text" id="username" name="username">
+
+            </div>
+
+            <div id="email-input" class="input-form">
+                <label for="email">Email</label> <br>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div id="password-input" class="input-form">
+                <label for="password">Password</label> <br>
+                <input type="password" id="password" name="password" required
+               pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+               title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm ít nhất một chữ, một số và một ký tự đặc biệt">
+            </div>
+
+            <div id="confirmpassword-input" class="input-form">
+                <label for="confirmpassword">Confirm Password</label> <br>
+                <input type="password" id="confirmpassword" name="confirmpassword" required
+               pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+               title="Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm ít nhất một chữ, một số và một ký tự đặc biệt">
+            </div>
+        </div>
+
+
+        <div class="information">
+            <div id="firstname-input" class="input-form">
+                <label for="firstname">First name</label> <br>
+                <input type="text" id="firstname" name="firstname">
+            </div>
+
+            <div id="lastname-input" class="input-form">
+                <label for="lastname">Last name</label> <br>
+                <input type="text" id="lastname" name="lastname">
+            </div>
+        </div>
+        <div id="gender-input" class="input-form" style="color:#88CEFB;font-weight: 500;">
+            <label>Gender</label> <br>
+        </div>
+        <div class="radio-button">
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male">
+                <label class="form-check-label" for="inlineRadio1">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female">
+                <label class="form-check-label" for="inlineRadio2">Female</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="inlineRadio3" value="Other" checked>
+                <label class="form-check-label" for="inlineRadio3">Other</label>
+            </div>
+        </div>
+
+
+        <div class="information">
+            <div id="phonenumber-input" class="input-form">
+                <label for="phonenumber">Phone</label> <br>
+                <input type="tel" id="phonenumber" name="phonenumber">
+            </div>
+            <div id="address-input" class="input-form">
+                <label for="Adress">Adress</label> <br>
+                <input type="text" id="address" name="address">
+            </div>
+            <div id="bankaccount-input" class="input-form">
+                <label for="bankaccount">Bank Account</label> <br>
+                <input type="text" id="bankaccount" name="bankaccount">
+            </div>
+            <div id="bankname-input" class="input-form">
+                <label for="bankname">Bank Name</label> <br>
+                <input type="text" id="bankname" name="bankname">
+            </div>
+        </div>
+
+        <div class="button-register">
+            <input type="submit" value="Add Client">
+        </div>
+
+    </form>
+
+<script>
+        const form = document.getElementById('register-form')
+        
+        form.addEventListener('submit', event=>{
+        event.preventDefault()
+
+        const formData = new FormData(form)
+        formData.append('typeuser', 'CLIENT')
+        const data = Object.fromEntries(formData)
+        if(data.password !== data.confirmpassword)
+        {
+            alert("Password different confirmpassword!")
+            return
+        }
+        const options = {
+            method: 'POST',
+            headers: {
+                'content-Type': 'application/json' 
+            },
+            body: JSON.stringify(data)
+        }
+        const URL = '/Register'
+        fetch(URL, options)
+        .then(response => response.json())
+        .then(data => {
+            if(data.err) alert('Username already exists!')
+            else{
+                alert('Account successfully created')
+                 window.location.href = '/';
+            }
+        })
+
+    })
+</script>
+</body>
+
+</html>
+

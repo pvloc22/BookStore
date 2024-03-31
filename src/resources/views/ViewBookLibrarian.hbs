@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/ViewBookLibrarian.css">
+    <title>View Book Librarian </title>
+
+</head>
+
+<body>
+    <div id="main">
+        <form class="form-search">
+            <div class="select-type">
+                <select id="type" class="{{URL_AUTH.pass}}" >
+                    <option value="A-Z"><i class="fa fa-sort-alpha-asc"></i>A->Z</option>
+                    <option value="Z-A">Z->A</option>
+                </select>
+
+            </div>
+            <input type="text" placeholder="Search by name" name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <div class="add-book">
+            <a href="/Add_book_librarian/{{URL_AUTH.pass}}"> New Book</a>
+        </div>
+        <div class="list" id="list-book">
+
+
+            {{#each data}}
+            <div class="container">
+                <a href="/ViewBookLibrarian/{{this.BID}}/{{../URL_AUTH.pass}}">
+                    <div class="book-block">
+                        <img src="/{{this.PATHIMAGE}}">
+                        <div class="book_information">
+                            <ul>
+                                <li class="information">Book ID: <span class="detail">{{this.BID}}</span></li>
+                                <li class="information">Tittle: <span class="detail">{{this.TITTLE}}</span> </li>
+                                <li class="information">Author: <span class="detail">{{this.AUTHOR}}</span> </li>
+                                <li class="information">Genre: <span class="detail">{{this.GENRE}}</span> </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {{/each}}
+
+        </div>
+
+    </div>
+    <script>
+        function showListBook(data, token) {
+            //display
+            if (typeof data === 'object' && data !== null) {
+                const boxes = document.querySelectorAll('.container');
+                boxes.forEach(box => {
+                    box.remove();
+                })
+                for (let i of data) {
+                    var list_book_container = document.getElementById('list-book')
+                    var container = document.createElement('div');
+                    container.className = "container"
+
+                    var tag_a = document.createElement('a')
+                    tag_a.href = '/ViewBookLibrarian/' + i.BID + '/' + token
+
+                    var tag_book_block = document.createElement('div')
+                    tag_book_block.className = 'book-block'
+
+
+                    var tag_img = document.createElement('img')
+                    tag_img.src = '/' + i.PATHIMAGE
+
+                    var tag_book_information = document.createElement('div')
+                    tag_book_information.className = 'book_information'
+
+                    var tag_ul = document.createElement('ul')
+
+                    var tag_book_id = document.createElement('li')
+                    tag_book_id.className = 'information'
+                    tag_book_id.innerText = 'Book ID: '
+                    var tag_span_book_id = document.createElement('span')
+                    tag_span_book_id.className = 'detail'
+                    tag_span_book_id.innerText = i.BID
+                    tag_book_id.appendChild(tag_span_book_id)
+
+                    var tag_Tittle = document.createElement('li')
+                    tag_Tittle.className = 'information'
+                    tag_Tittle.innerText = 'Tittle: '
+                    var tag_span_tittle = document.createElement('span')
+                    tag_span_tittle.className = 'detail'
+                    tag_span_tittle.innerText = i.TITTLE
+                    tag_Tittle.appendChild(tag_span_tittle)
+
+                    var tag_author = document.createElement('li')
+                    tag_author.className = 'information'
+                    tag_author.innerText = 'Author: '
+                    var tag_span_author = document.createElement('span')
+                    tag_span_author.className = 'detail'
+                    tag_span_author.innerText = i.AUTHOR
+                    tag_author.appendChild(tag_span_author)
+
+                    var tag_genre = document.createElement('li')
+                    tag_genre.className = 'information'
+                    tag_genre.innerText = 'Genre: '
+                    var tag_span_genre = document.createElement('span')
+                    tag_span_genre.className = 'detail'
+                    tag_span_genre.innerText = i.GENRE
+                    tag_genre.appendChild(tag_span_genre)
+
+                    tag_ul.appendChild(tag_book_id)
+                    tag_ul.appendChild(tag_Tittle)
+                    tag_ul.appendChild(tag_author)
+                    tag_ul.appendChild(tag_genre)
+
+                    tag_book_information.appendChild(tag_ul)
+
+                    tag_book_block.appendChild(tag_img)
+                    tag_book_block.appendChild(tag_book_information)
+
+                    tag_a.appendChild(tag_book_block)
+
+                    container.appendChild(tag_a)
+
+                    list_book_container.appendChild(container)
+
+                }
+            }
+        }
+
+        function fetch_getBook(tittle_search) {
+            const options = {
+                method: 'POST',
+                headers: {
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify(tittle_search)
+            }
+            const URL = '/ViewBookLibrarian/search'
+
+            return fetch(URL, options)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.err) window.location.href('/erro')
+                    else {
+                        return data['data']['0']
+                    }
+                })
+        }
+
+        var data_Object_global = null
+        var getToken = document.getElementById('type').className
+
+        //Run
+        // Onclick form
+        const form = document.querySelector('form')
+        form.addEventListener('submit', async event => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData)
+
+            fetch_getBook(data)
+                .then(data => {
+                    showListBook(data, getToken)
+                    data_Object_global = data
+                })
+        })
+
+        // function
+        function sort_AtoZ(data) {
+            data.sort((a, b) => {
+                const tittle_A = a.TITTLE.toUpperCase();
+                const tittle_B = b.TITTLE.toUpperCase();
+
+                if (tittle_A > tittle_B) return 1;
+                else if (tittle_A < tittle_B) return -1;
+                else return 0;
+            })
+        }
+
+        function sort_ZtoA(data) {
+            data.sort((a, b) => {
+                const tittle_A = a.TITTLE.toUpperCase();
+                const tittle_B = b.TITTLE.toUpperCase();
+
+                if (tittle_A > tittle_B) return -1;
+                else if (tittle_A < tittle_B) return 1;
+                else return 0;
+            })
+        }
+
+        //change slect
+        const select = document.querySelector('select')
+        select.addEventListener('change', (event) => {
+            const value_select = event.target.value
+            if (data_Object_global === null) {
+                fetch_getBook({ search: '' })
+                    .then(data => {
+                        data_Object_global = data
+
+                        if (value_select === 'A-Z') sort_AtoZ(data)
+                        else sort_ZtoA(data)
+
+                        showListBook(data, getToken)
+                    })
+
+            }
+            else {
+                if (value_select === 'A-Z') sort_AtoZ(data_Object_global)
+                else sort_ZtoA(data_Object_global)
+                showListBook(data_Object_global, getToken)
+            }
+        })
+    </script>
+</body>
+
+</html>

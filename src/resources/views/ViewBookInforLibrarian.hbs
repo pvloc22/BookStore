@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/ViewBookInforLibrarian.css">
+
+  <title>view book information librian</title>
+
+</head>
+
+<body>
+  <div id="main">
+    <div class="book">
+      <div class="book-choose">
+        <img src="/{{data.PATHIMAGE}}">
+        <div class="button-remove-book">
+          <button class="button-remove" onclick="fetch_removeBook('{{data.BID}}', '{{URL_AUTH.pass}}')"><i class="fa fa-remove"></i>remove </button>
+        </div>
+      </div>
+      <div class="book-information">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-light">Title: <span>{{data.TITTLE}}</span></li>
+          <li class="list-group-item list-group-item-light">Author: <span>{{data.AUTHOR}}</span></li>
+          <li class="list-group-item list-group-item-light">Publishing Year: <span>{{data.PUBLISHINGYEAR}}</span></li>
+          <li class="list-group-item list-group-item-light">Genre: <span>{{data.GENRE}}</span></li>
+          <li class="list-group-item list-group-item-light">Language: <span>{{data.LANGUAGE_BOOK}}</span></li>
+          <li class="list-group-item list-group-item-light">Has left: <span>{{data.HASLEFT}}</span></li>
+          <li class="list-group-item list-group-item-light">Price: <span>{{data.PRICE}} $</span></li>
+          <li class="list-group-item list-group-item-light">Routine: <span>{{data.DURATION}} Days</span></li>
+        </ul>
+      </div>
+      <div class="button-UpdateInfor">
+        <a href="/updateBookLibrarian/{{data.BID}}"><button class="button-update"> <i class="fa fa-edit"></i><span class="update">Update</span> </button></a>
+      </div>
+    </div>
+  </div>
+  <script>
+    function fetch_removeBook(BID, token) {
+      const dataObj = {
+        bid: BID
+      }
+
+      const options = {
+        method: 'DELETE',
+        headers: {
+          'content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataObj)
+      }
+      const URL = '/ViewBookInforLibrarian/delete'
+
+      return fetch(URL, options)
+        .then(response => response.json())
+        .then(data => {
+          if (data.err) window.location.href('/erro')
+          else {
+            alert('success remove a book!')
+            window.location.href = '/ViewBookLibrarian/' + token;
+
+          }
+        })
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+@charset "UTF-8";
+#main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+
+/* form search */
+#main form {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center; }
+
+form.form-search input[type=text] {
+  padding: 10px;
+  font-size: 24px;
+  border: 1px solid grey;
+  font-style: italic;
+  font-weight: 500;
+  float: left;
+  width: 45%;
+  background-color: #FFFAF0; }
+
+form.form-search button {
+  float: left;
+  width: 7%;
+  max-width: 6%;
+  padding: 10px;
+  background-color: #6FBFF1;
+  color: white;
+  font-size: 24px;
+  border: 1px solid grey;
+  border-left: none;
+  /* Prevent double borders */
+  cursor: pointer;
+  border-top-right-radius: 22px;
+  border-bottom-right-radius: 22px; }
+
+/* a->z hoặc z->a */
+.select-type select {
+  border-top-left-radius: 10px;
+  /* Độ cong góc trái trên của select */
+  border-bottom-left-radius: 10px;
+  /* Độ cong góc dưới trái của select */
+  /* Các thuộc tính khác cho viền và nền của select */
+  border: 1px solid #ccc;
+  padding: 5px;
+  background-color: #fff; }
+
+.select-type select {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  border: 1px solid #ccc;
+  padding: 15px; }
+
+#type {
+  background-color: #6FBFF1;
+  color: khaki;
+  font-weight: bold;
+  font-size: 20px; }
+
+/*heading của bảng*/
+.table_heading {
+  display: flex;
+  background-color: white;
+  border: 2px solid blue;
+  border-radius: 8px;
+  padding: 9px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 7px;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 22; }
+
+/*dòng */
+.table-row {
+  display: flex;
+  background-color: white;
+  border-radius: 8px;
+  padding: 9px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 4px;
+  justify-content: space-between;
+  color: black; }
+
+a {
+  text-decoration: none; }
+
+/*dữ liệu trên dòng */
+.table-data {
+  flex: 1;
+  padding: 10px;
+  border-right: 1px solid #ccc; }
+
+.table-cell:last-child {
+  border-right: none; }
+
+.table-row:hover {
+  background-color: aquamarine;
+  border: 2px solid blue; }
+
+.table-row a {
+  font-size: 17px;
+  font-weight: bold; }
+
+.table-row a:hover {
+  color: rgba(255, 255, 0, 0.89); }
+
+.nav-link.active {
+  color: coral; }

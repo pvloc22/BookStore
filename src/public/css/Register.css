@@ -1,0 +1,116 @@
+@charset "UTF-8";
+.login-container {
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  /* Đặt chiều rộng thành 200 pixel */
+  height: 987px;
+  margin-top: 23px;
+  padding-left: 70px; }
+
+img {
+  float: right; }
+
+.my-book-shelf {
+  display: flex;
+  justify-content: center;
+  font-size: 29px;
+  font-style: oblique;
+  margin-bottom: 20px; }
+
+.book-effect {
+  color: coral; }
+
+.shelf-effect {
+  word-spacing: 2px; }
+
+/*vùng chứa cụm label input của form*/
+.input-form {
+  margin-top: 10px;
+  font-size: 23px;
+  margin-left: 35px;
+  margin-right: 60px; }
+
+/* nhập username email password confirm password */
+.information-login {
+  margin-bottom: 23px; }
+
+.information-login label {
+  margin-top: 12px;
+  width: 200px;
+  height: 27px;
+  color: #F1C0A0;
+  font-weight: 600;
+  font-size: 22px; }
+
+.information-login input {
+  padding-left: 27px;
+  padding-top: 12px;
+  width: 260px;
+  height: 37px;
+  border-color: aliceblue;
+  border-radius: 6px;
+  font-size: 22px; }
+
+.button-register input {
+  margin-top: 26px;
+  margin-left: 60px;
+  width: 66%;
+  height: 43px;
+  background-color: #785FF8;
+  color: aliceblue;
+  font-size: 22px;
+  font-weight: bold; }
+
+.information-login {
+  display: flex;
+  flex-wrap: wrap; }
+
+.login {
+  margin-top: 20px;
+  margin-left: 21px; }
+
+/* vùng chứa label inoput thông tin cá nhân  */
+.information {
+  display: flex;
+  flex-wrap: wrap; }
+
+.information input {
+  margin-top: 12px;
+  width: 260px;
+  height: 37px;
+  border-color: #f0fff5;
+  border-radius: 6px;
+  font-size: 22px; }
+
+.information label {
+  font-weight: 500;
+  color: #88CEFB; }
+
+/*chọn giới tính*/
+.radio-button {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 19px; }
+
+.radio-button label {
+  font-weight: bold;
+  color: #88CEFB; }
+
+.login a {
+  display: flex;
+  justify-content: flex-end;
+  font-style: italic;
+  margin-right: 120px; }
+
+.login a:hover {
+  color: red; }
+
+/* option chọn gender */
+.form-check-inline {
+  margin-left: 77px;
+  margin-right: 18px; }
+
+.form-check-inline label {
+  font-size: 21px; }

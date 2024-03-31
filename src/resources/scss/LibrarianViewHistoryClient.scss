@@ -1,0 +1,88 @@
+
+#main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+/* vùng chứa các ô */
+.list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+}
+/* các ô chứa thông tin về sách*/
+.book{
+    display: flex;
+    padding-top:10px ;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    padding-right: 8px;
+    padding-left: 12px;
+    background-color: white;
+    border: 4px double salmon;
+    border-radius: 18px;
+   
+}
+.book img{
+    height: 290px;
+    width: 230px;
+    float: right;
+   
+}
+/* vùng chứa thông tin  */
+.transaction_information{
+    padding-left: 20px;
+    width: 70%;
+}
+/* các dòng thông tin */
+.information{
+    margin-bottom: 6px;
+    font-size: 20px;
+}
+/*tô màu thông tin quan trọng */
+.detail{
+    color: blue;
+    margin-right: 8px;
+    font-style: italic;
+    font-weight: 600;
+}
+/* tình trạng giao dịch  */
+.return{
+    color:brown;
+    margin-right: 10px;
+    font-weight: 600;
+}
+.borrowing{
+    color:#80BA9D;
+    margin-right: 10px;
+    font-weight: 600;
+}
+.cancel{
+    color:#FFD403;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+div.list > div.book {
+    position: relative;
+}
+/*vùng chứa thông tin giao dịch*/
+.information-status{
+    margin-bottom: 23px;
+    font-size: 26px;
+    position: absolute;
+    right: 0;
+    top: 0; 
+    text-transform: uppercase;
+}
+.nav-link.active {
+    color: coral;
+  }
+.book ul{
+    list-style: none;
+}

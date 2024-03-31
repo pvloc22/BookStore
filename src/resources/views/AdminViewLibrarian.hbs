@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/ViewClient.css">
+    <title>Admin view Librarian</title>
+
+</head>
+
+<body>
+    <div id="main">
+        <form class="form-search">
+            <div class="select-type">
+                <select id="type">
+                    <option value="A->Z">A->Z</option>
+                    <option value="Z->A">Z->A</option>
+                </select>
+            </div>
+            <input type="text" placeholder="Search by name" name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <div class="add-librarian">
+            <a href="/Admin_add_librarian/{{URL_AUTH.pass}}"> New librarian</a>
+        </div>
+        <div class="Client">
+            <table style="width:100%">
+                <tr class="TableRow">
+                    <th class="HeaderFirst">Client ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th class="HeaderLast">State</th>
+                </tr>
+
+                {{#each data}}
+                <tr>
+                    <td class="RowFirst"><a href="/ViewClient/informationClient/{{this.ID}}/{{../URL_AUTH.pass}}" >{{this.ID}}</a></td>
+                    <td>{{this.LASTNAME}}</td>
+                    <td>{{this.FIRSTNAME}}</td>
+                    <td>{{this.PHONENUMBER}}</td>
+                    <td>{{this.EMAIL}}</td>
+                    <td>{{this.GENRE}}</td>
+                    {{#if this.ISACTIVE }}
+                    <td class="RowLast"> <label class="switch">
+                            <input type="checkbox" id="{{this.ID}}" onclick="showCheck('{{this.ID}}')" checked>
+                            <span class="slider round"></span>
+                        </label></td>
+                    {{else}}
+                    <td class="RowLast"> <label class="switch">
+                            <input type="checkbox" id="{{this.ID}}" onclick="showCheck('{{this.ID}}')">
+                            <span class="slider round"></span>
+                        </label></td>
+                    {{/if}}
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+
+    </div>
+    <script>
+
+        function fetch_UpdateIsActive(UID, ISACTIVE) {
+
+            const dataObj = {
+                uid: UID,
+                isactive: ISACTIVE
+            }
+
+            const options = {
+                method: 'PUT',
+                headers: {
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataObj)
+            }
+            const URL = '/ViewClient/updateIsActive'
+
+            return fetch(URL, options)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.err) window.location =('/erro')
+                    else {
+                        console.log(data)
+
+                    }
+                })
+        }
+        function showCheck(UID) {
+            const value = document.getElementById(UID)
+            if (value.checked) {
+                fetch_UpdateIsActive(UID, 1)
+                .then(data=> console.log(data))
+            }
+            else
+                fetch_UpdateIsActive(UID, 0)
+                .then(data=> console.log(data))
+
+        }
+    </script>
+</body>
+
+</html>

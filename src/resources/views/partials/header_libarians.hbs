@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/css_partials/header.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <div class="my-book-shelf">
+        <strong>My <span class="book-effect">Book</span><br> <span class="shelf-effect">S h e l f</span></strong>
+      </div>
+      <img src="/images/Book.png">
+    </div>
+    <nav class="choose-section-header">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/DashboardLibrarian/{{URL_AUTH.pass}}"><i class="fas fa-home"></i>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ViewBookLibrarian/{{URL_AUTH.pass}}"><i class="fas fa-book-open"></i>Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ViewClient/{{URL_AUTH.pass}}"><i class="fas fa-user"></i>Client</a>
+        </li>
+        <li>
+          <hr>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ViewProfileLibrarian/{{URL_AUTH.pass}}"><i class="fas fa-user-circle"></i>My profile</a>
+        </li>
+        <li class="nav-item">
+          <a id="logout_nav" class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i>Log out</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <script>
+    const logout_button = document.getElementById('logout_nav')
+    function f_logout(event) {
+      event.preventDefault()
+      const url = '/home/logout'
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.err) {
+            alert('Logout false!')
+            return
+          }
+          else {
+            window.location.href = '/';
+
+          }
+        })
+        .catch((error) => {
+          alert('Erro!')
+
+        })
+    }
+    logout_button.addEventListener('click', f_logout)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+@charset "UTF-8";
+#main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+
+.nav-link.active {
+  color: coral; }
+
+/*vùng chứa danh sách */
+.list-pay {
+  margin-left: 17px;
+  margin-right: 17px;
+  margin-top: 20px;
+  background-color: white;
+  border: 4px double #00C2F9;
+  border-radius: 7px;
+  padding: 17px;
+  display: flex;
+  flex-direction: column; }
+
+/*  ô chứa sách */
+.book-to-pay {
+  background-color: aliceblue;
+  border: 2px solid rgba(255, 199, 173, 0.644);
+  border-radius: 13px;
+  padding: 6px;
+  display: flex;
+  position: relative;
+  margin-bottom: 15px; }
+
+.book-to-pay img {
+  width: 8em;
+  height: 13em;
+  margin-left: 40px;
+  margin-right: 27px;
+  margin-bottom: 10px; }
+
+/* thông tin sách*/
+.book-information {
+  margin-bottom: 18px;
+  margin-top: 17px;
+  font-size: 17px;
+  margin-left: 30px;
+  font-weight: 700;
+  color: darkgray; }
+
+/*tô đậm thông tin quan trọng*/
+.book-information span {
+  margin-left: 12px;
+  color: #00aaff; }
+
+.book-pay {
+  display: flex;
+  width: 80%; }
+
+/* vùng chứa nút cancel */
+.button {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 8px; }
+
+.button i {
+  margin-right: 5px; }
+
+/* nút cancel */
+.button-cancel {
+  padding: 7px;
+  font-size: 20px;
+  background-color: #75C7EA;
+  border-radius: 17px;
+  font-weight: 500;
+  color: yellow;
+  border: none; }
+
+.button-cancel:hover {
+  border: 4px solid aquamarine; }
+
+/*nút pay*/
+.button-payment {
+  margin-top: 20px;
+  margin-right: 20px;
+  padding: 7px;
+  font-size: 20px;
+  background-color: #B8AEF7;
+  border: 2px solid #FFBA91;
+  border-radius: 15px;
+  font-weight: 500;
+  color: yellow; }
+
+.button-payment:hover {
+  border-color: aqua; }
+
+/* vùng chứa nút*/
+.button-pay {
+  display: flex;
+  justify-content: center; }
+
+.button-pay i {
+  margin-right: 9px; }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center; }
+
+.popup {
+  width: 300px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: none;
+  text-align: center; }

@@ -1,0 +1,125 @@
+@charset "UTF-8";
+.login-container {
+  margin-top: 50px;
+  border: 5px double red;
+  border-radius: 22px;
+  padding-top: 30px;
+  position: relative;
+  background-color: #FBFAF5;
+  display: flex;
+  margin-left: 42px;
+  flex-direction: column;
+  margin-right: 44px;
+  height: 787px;
+  margin-top: 23px;
+  padding-left: 70px; }
+
+form input[type=password] {
+  background-color: #FFFFFA;
+  font-weight: 600; }
+
+/* các label input trong form group */
+.form-group {
+  margin-bottom: 22px; }
+
+.form-group input {
+  width: 88%; }
+
+form label {
+  margin-bottom: 6px;
+  color: cornflowerblue;
+  font-weight: 700; }
+
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.input-form {
+  margin-top: 10px;
+  font-size: 23px;
+  margin-left: 35px;
+  margin-right: 100px; }
+
+/* nhập username email password confirm password */
+.information-login {
+  margin-bottom: 23px; }
+
+.information-login label {
+  margin-top: 12px;
+  width: 200px;
+  height: 27px;
+  color: #F1C0A0;
+  font-weight: 600;
+  font-size: 22px; }
+
+.information-login input {
+  padding-left: 27px;
+  padding-top: 3px;
+  width: 260px;
+  height: 37px;
+  border-color: aliceblue;
+  border-radius: 6px;
+  font-size: 22px; }
+
+.button-register input {
+  margin-top: 46px;
+  margin-left: 60px;
+  width: 66%;
+  height: 43px;
+  background-color: #70C6DC;
+  color: white;
+  font-size: 22px;
+  font-weight: bold; }
+
+.information-login {
+  display: flex;
+  flex-wrap: wrap; }
+
+.login {
+  margin-top: 20px;
+  margin-left: 21px; }
+
+/* vùng chứa label inoput thông tin cá nhân  */
+.information {
+  display: flex;
+  flex-wrap: wrap; }
+
+.information input {
+  margin-top: 12px;
+  width: 260px;
+  height: 37px;
+  border-color: #f0fff5;
+  border-radius: 6px;
+  font-size: 22px; }
+
+.information label {
+  font-weight: 500;
+  color: #88CEFB; }
+
+/*chọn giới tính*/
+.radio-button {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 19px; }
+
+.radio-button label {
+  font-weight: bold;
+  color: #88CEFB; }
+
+.login a {
+  display: flex;
+  justify-content: flex-end;
+  font-style: italic;
+  margin-right: 120px; }
+
+.login a:hover {
+  color: red; }
+
+/* option chọn gender */
+.form-check-inline {
+  margin-left: 77px;
+  margin-right: 18px; }
+
+.form-check-inline label {
+  font-size: 21px; }

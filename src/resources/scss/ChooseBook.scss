@@ -1,0 +1,143 @@
+
+
+#main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+/* tạo vùng chứa lớn book để chứa sách và thông tin : ô trắng*/
+.book{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 4px double #b5f6ff;
+    border-radius: 9px; 
+    padding: 18px;
+    background-color:white;
+    padding: 20px;
+    margin-left: 120px;
+    margin-right: 120px;
+    position: relative;
+}
+.nav-link.active {
+    color: coral;
+  }
+ 
+ /* tô màu thông tin chính*/ 
+.list-group span{
+    font-weight: bold;
+    color: rgb(0, 26, 255);
+}
+/* vùng chứa ảnh */
+.book-choose img{
+    margin-top: 15px;
+    height: 400px;
+    width: 300px;
+}
+.book-choose {
+    margin-right: 80px;
+    display: flex;
+    flex-direction: column;
+}
+/* vùng chứa nút like */
+.button-add-to-interesting-book{ 
+    display: flex;
+    justify-content: center;   
+}
+/*  nút like */
+.button-like{
+    width:30%;
+    margin-top: 13px;
+    margin-bottom: 10px;
+    padding: 3px;
+    font-size: 18px;
+   background-color: #92C7F0;
+   border-radius: 15px;
+   color: white;
+}
+/* vùng chứa thông tin sách*/
+.book-information{
+    margin-top: 22px;   
+}
+.book-information li {
+    border: none;
+}
+/* vùng chứa nút add to cart*/
+.button-add-to-payment{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 17px;
+    margin-bottom: 8px;
+  
+} 
+button{
+    border: none;
+}
+/* nút add to cart */
+.button-add-to-cart i{
+    margin-right: 10px;
+}
+.button-add-to-cart:hover{
+    color: coral;
+}
+.button-add-to-cart{
+   font-weight: bold;
+   margin-left: 480px;
+   background-color: #8590F7;
+   font-size: 15px;
+   padding:8px;
+   border-radius: 15px;
+   color: white;
+}
+/* icon unlike */
+.fa-heart-broken:before {
+    content: "\f7a9"; /* Unicode của icon trái tim bị vỡ */
+}
+button.liked{
+   color: chocolate;
+}
+
+.book-suggest{
+    padding-top: 42px;
+  padding-left: 2px;
+  padding-right: 2px;
+  border:5px double #FF9356;
+  border-radius: 17px;
+  margin-top: 21px ;
+  margin-left: 12px;
+  margin-right: 16px;
+  background-color: white;
+  position: relative;
+}
+#list-book{
+   display: flex;
+  flex-wrap:wrap;
+ padding-left: 10px;
+ padding-right: 7px;
+ margin-bottom: 12px;
+}
+#list-book img{
+    width: 10em;
+    height: 14em;
+}
+.BookImage:hover{
+    border:2px solid  #869EDC;
+    padding: 4px;
+    border-radius: 7px;
+
+}
+.BookImage{
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+.suggest{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 12px;
+    margin-top: 3px;
+    color:  #90CBF9;
+}

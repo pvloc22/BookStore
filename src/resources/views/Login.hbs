@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/Login.css">
+
+    <title>Login</title>
+
+</head>
+
+<body>
+    <div id="container_login">
+        <div class="login-container">
+            <div>
+                <img src="/images/Book.png">
+            </div>
+
+            <div class="my-book-shelf">
+                <strong>My <span class="book-effect">Book</span><br> <span class="shelf-effect">S h e l
+                        f</span></strong>
+            </div>
+
+            <div class="welcome">
+                Welcome Back !
+            </div>
+
+            <div class="require-to-login">
+                Sign in to continue to your Digital Library
+            </div>
+            <form id="loginFrom">
+                <div id="username-input" class="input-form">
+                    <label for="username">Username</label> <br>
+                    <input type="text" id="username" name="username" placeholder="username@collegue.com">
+                </div>
+                <div id="password-input" class="input-form">
+                    <label for="password">Password</label> <br>
+                    <input type="password" id="Password" name="password" placeholder="Your Password">
+                </div>
+                <div class="button-login">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+
+            <div class="register">
+                New User ? <a href="register">Register Here</a>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginFrom').addEventListener('submit',function(e){
+            e.preventDefault()
+            
+                var user = document.getElementById('username').value
+                var pass = document.getElementById('Password').value
+
+                const formData = {  username: user,
+                                    password: pass}   
+                
+                const options = {
+                    method: 'POST',
+                    headers: {
+                         "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData)
+                }
+                
+                    fetch('/', options)
+                    .then(response => response.json()) // Chuyển đổi dữ liệu nhận được sang JSON
+                    .then(data => {
+                        if(data.err && data.status === 1)
+                        {
+                            alert('Login failed')
+                        }
+                        else if(data.err && data.status === 2){
+                            alert('Account is locked')
+                        }
+                        else{
+                            if(data.typeuser ==='CLIENT')
+                            {
+                                window.location.href = '/home/' + data.password;
+                            }
+                            else if(data.typeuser === 'LIBRARIAN')
+                                window.location.href = '/DashboardLibrarian/' + data.password;
+                            else
+                                window.location.href = '/Statistic_Admin/' + data.password;    
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Lỗi khi gửi yêu cầu đăng nhập:', error);
+                    });
+        })
+    </script>
+
+</body>
+
+</html>

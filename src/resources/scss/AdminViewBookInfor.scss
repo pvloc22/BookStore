@@ -1,0 +1,101 @@
+
+
+#main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+/* tạo vùng chứa lớn book để chứa sách và thông tin : ô trắng*/
+.book{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 4px double #b5f6ff;
+    border-radius: 9px; 
+    padding: 18px;
+    background-color:white;
+    padding: 20px;
+    margin-left: 120px;
+    margin-right: 120px;
+    position: relative;
+}
+.nav-link.active {
+    color: coral;
+  }
+ 
+ /* tô màu thông tin chính*/ 
+.list-group span{
+    font-weight: bold;
+    color: rgb(0, 26, 255);
+}
+/* vùng chứa ảnh */
+.book-choose img{
+    margin-top: 15px;
+    height: 400px;
+    width: 300px;
+}
+.book-choose {
+    margin-right: 80px;
+    display: flex;
+    flex-direction: column;
+}
+/* vùng chứa nút remove */
+.button-remove-book{ 
+    display: flex;
+    justify-content: center;   
+}
+.button-remove-book i{ 
+    margin-right: 4px;   
+}
+/*  nút remove*/
+.button-remove{
+    width:30%;
+    margin-top: 13px;
+    margin-bottom: 10px;
+    padding: 3px;
+    font-size: 18px;
+   background-color: #8BD2EC;
+   border-radius: 15px;
+   color: white;
+}
+.button-remove:hover{
+    border: 3px solid aquamarine;
+    color: #FFFAD8;
+}
+/* vùng chứa thông tin sách*/
+.book-information{
+    margin-top: 12px;   
+}
+.book-information li {
+    border: none;
+}
+/* vùng chứa nút update*/
+.button-UpdateInfor{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 17px;
+    margin-bottom: 8px;
+  
+} 
+button{
+    border: none;
+}
+/* nút update */
+.button-update i{
+    margin-right: 10px;
+}
+.button-update:hover{
+    color: orange;
+}
+.button-update{
+   font-weight: bold;
+   margin-left: 480px;
+   background-color: #8590F7;
+   font-size: 15px;
+   padding:8px;
+   border-radius: 15px;
+   color: white;
+}

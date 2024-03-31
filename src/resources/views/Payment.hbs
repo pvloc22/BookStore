@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/Payment.css">
+    <title>Payment</title>
+
+</head>
+
+<body>
+    <div id="main">
+
+        <div class="list-pay">
+
+            {{#each data}}
+            <div class="book-to-pay">
+                <img src="/{{this.PATHIMAGE}}">
+                <div class="book-pay">
+                    <div class="book-detail">
+                        <div class="book-information">Title: <span>{{this.TITTLE}}</span></div>
+                        <div class="book-information">BookID: <span>{{this.BID}}</span></div>
+                        <div class="book-information">Price: <span>{{this.CURRENTPRICE}} $</span></div>
+                        <div class="book-information">Routine: <span>{{this.CURRENTDURATION}} days</span></div>
+                        <div class="button">
+                            <button class="button-cancel" onclick="f_PostRemoveBook('{{this.TID}}', '{{this.BID}}')"><i
+                                    class="fa fa-remove"></i>Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+
+
+
+            {{!-- Button payment --}}
+            <div class="button-pay">
+                <button id="paymentButton" class="button-payment"><i class="fa fa-credit-card"></i>Payment</button>
+            </div>
+            {{!-- authentication password --}}
+            <div class="overlay" id="overlay">
+                <div class="popup" id="popup">
+                    <h2>Enter Password</h2>
+                    <input type="password" id="passwordInput">
+                    <button id="confirmButton" onclick="f_postPayBook('{{TID_}}', '{{username}}')">OK</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <script>
+
+        const paymentButton = document.getElementById('paymentButton');
+        const overlay = document.getElementById('overlay');
+        const popup = document.getElementById('popup');
+        const confirmButton = document.getElementById('confirmButton');
+        const passwordInput = document.getElementById('passwordInput');
+
+        paymentButton.addEventListener('click', () => {
+            overlay.style.display = 'flex';
+            popup.style.display = 'block';
+        });
+
+
+
+
+
+
+
+        function f_PostRemoveBook(TID, BID) {
+            const dataObj = {
+                TID: TID,
+                BID: BID
+            }
+            const options = {
+                method: 'POST',
+                headers: {
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataObj)
+            }
+            const URL = '/Payment/removeToCash'
+            return fetch(URL, options)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.err) alert('Error deleted book to cart')
+                    else {
+                        alert('Successfully delete book to cart')
+                        location.reload();
+                    }
+                })
+        }
+
+
+
+
+        function f_checkPassword(username) {
+            let password = passwordInput.value
+            if (password === null) {
+                return
+            }
+            const dataObj = {
+                username: username,
+                password: password
+            }
+            const options = {
+                method: 'POST',
+                headers: {
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataObj)
+            }
+            const URL = '/Payment/checkpassword'
+            return fetch(URL, options)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.err) {
+                        alert('Error password')
+                        overlay.style.display = 'none';
+                        popup.style.display = 'none';
+                        passwordInput.value = '';
+                        return 0
+                    }
+                    else {
+                        return 1
+                    }
+                })
+        }
+
+
+
+
+        function f_paymentAllBook(TID) {
+            const dataObj = {
+                TID: TID
+            }
+            const options = {
+                method: 'POST',
+                headers: {
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataObj)
+            }
+            const URL = '/Payment/payToCash'
+            return fetch(URL, options)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.err){
+                        alert('Error Payment')
+                        overlay.style.display = 'none';
+                        popup.style.display = 'none';
+                        passwordInput.value = '';
+                    }
+
+                    else {
+                        alert('Successfully payment')
+                        location.reload();
+                    }
+                })
+
+        }
+        async function f_postPayBook(TID, username) {
+            if (TID === -1) {
+                alert('Error payment')
+                return
+            }
+            const checkPassword = await f_checkPassword(username)
+            if (checkPassword) {
+                f_paymentAllBook(TID)
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>

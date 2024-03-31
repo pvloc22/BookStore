@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/ViewProfileLibrarian.css">
+    <title>view profile librian</title>
+
+
+</head>
+
+<body>
+    <div id="main">
+        <div class="information-container">
+            <div class="information">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-light">First name: <span>{{data.FIRSTNAME}}</span></li>
+                    <li class="list-group-item list-group-item-light">Last name: <span>{{data.LASTNAME}}</span></li>
+                    <li class="list-group-item list-group-item-light">Gender: <span>{{data.GENRE}}</span></li>
+                    <li class="list-group-item list-group-item-light">Phone number: <span>{{data.PHONENUMBER}}</span></li>
+                    <li class="list-group-item list-group-item-light">Address: <span>{{data.ADDRESS_U}}</span></li>
+                    <li class="list-group-item list-group-item-light">Bank account: <span>8982948</span></li>
+                    <li class="list-group-item list-group-item-light">Bank name: <span>Teckcombank</span></li>
+                    <li class="list-group-item list-group-item-light">Department: <span>A</span></li>
+            </div>
+            <div class="button-update-infor">
+                <a href="/AccountUpdateLibrarian/{{URL_AUTH.pass}}"><button class="button-update"><i class="fas fa-edit"></i>Update information</button></a>
+            </div>
+            <div class="button-change-pass">
+                <a href="/ChangePassWordLibrarian/{{URL_AUTH.pass}}"><button class="button-change"><i class="fa fa-key icon"></i> Change password</button></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

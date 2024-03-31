@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> --}}
+    {{!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+    {{!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> --}}
+    <link rel="stylesheet" href="/css/Statistic_Admin.css">
+
+    <title>Revenue Statistic </title>
+
+</head>
+
+<body>
+    <div id="main">
+        <div class="form-group">
+            <label for="input-Time">Time </label>
+            <select class="Month">
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+            <select class="Year">
+                <option value="2019">2020</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+            </select>
+
+        </div>
+        <div class="chart">
+            <!-- <canvas id="my-chart" style="width:230px"></canvas> -->
+            <div class="revenue-chart">
+                <div class="ViewRevenue">
+                    <div class="Total">Total revenue: <span>2012 $</span> </div>
+                    <canvas id="revenue"></canvas>
+                    <div class="Calculate">
+                        <ul>
+                            <li>Average revenue: <span>300 $/day</span></li>
+                            <li>Highest revenue: <span>300 $/day</span></li>
+                            <li>Lowest revenue: <span>300 $/day</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="client-register-chart">
+                <div class="Total">Total register: <span>2012</span> </div>
+                <canvas id="client-register"></canvas>
+                <div class="Calculate">
+                    <ul>
+                        <li>Average revenue: <span>300 $/day</span></li>
+                        <li>Highest revenue: <span>300 $/day</span></li>
+                        <li>Lowest revenue: <span>300 $/day</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script>
+
+        function fetch_Transaction() {
+
+
+            const URL = '/Statistic_Admin/transactions'
+
+            return fetch(URL)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.err) window.location =('/erro')
+                    else {
+                        console.log(data)
+                    }
+                })
+        }
+
+        fetch_Transaction()
+
+
+
+            const xValues = [2017];
+            const yValues = [860, 1140, 1060, 1060, 1070, 1110, 1330];
+
+            new Chart("revenue", {
+                type: "line",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        fill: true,
+                        pointRadius: 1,
+                        borderColor: "#8FD9E6",
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: "Revenue in May, 2023",
+                        fontSize: 16
+                    },
+                    scales: {
+                        xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: "Year"
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: "USA Dollar"
+                            }
+                        }]
+                    }
+                }
+            });
+            new Chart("client-register", {
+                type: "line",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        fill: true,
+                        pointRadius: 1,
+                        borderColor: "#869DDB",
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: "registration number",
+                        fontSize: 16
+                    },
+                    scales: {
+                        xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: "year"
+                            }
+                        }],
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: "client register "
+                            }
+                        }]
+                    }
+                }
+            });
+
+
+        </script>
+</body>
+
+</html>

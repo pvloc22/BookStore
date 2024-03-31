@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/LibrarianViewHistoryClient.css">
+    <title>Librarian view history of client</title>
+
+</head>
+
+<body>
+    <div id="main">
+
+        <div class="list">
+            <div class="book">
+                <img src="Book5.jpg">
+                <div class="transaction">
+                    <div class="information-status"><span class="return">Returned </span> </div>
+                    <ul>
+                        <li class="information">transaction ID: <span class="detail">T0001</span></li>
+                        <li class="information">Book: <span class="detail">Obama</span> </li>
+                        <li class="information">Price: <span class="detail">20000 VND </span> </li>
+                        <li class="information">Borrow Date: <span class="detail">21-3-2021</span> </li>
+                        <li class="information">Return Date: <span class="detail">4-4-2022</span> </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="book">
+                <img src="Book5.jpg">
+                <div class="transaction">
+                    <div class="information-status"><span class="borrowing">Borrowing </span> </div>
+                    <ul>
+                        <li class="information">transaction ID: <span class="detail">T0001</span></li>
+                        <li class="information">Book: <span class="detail">Obama</span> </li>
+                        <li class="information">Price: <span class="detail">20000 VND </span> </li>
+                        <li class="information">Borrow Date: <span class="detail">21-3-2021</span> </li>
+                        <li class="information">Return Date: <span class="detail">4-4-2022</span> </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="book">
+                <img src="Book5.jpg">
+                <div class="transaction">
+                    <div class="information-status"><span class="cancel">Cancel</span> </div>
+                    <ul>
+                        <li class="information">transaction ID: <span class="detail">T0001</span></li>
+                        <li class="information">Book: <span class="detail">Obama</span> </li>
+                        <li class="information">Price: <span class="detail">20000 VND </span> </li>
+                        <li class="information">Borrow Date: <span class="detail">21-3-2021</span> </li>
+                        <li class="information">Return Date: <span class="detail">4-4-2022</span> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const links = document.querySelectorAll('.nav-link');
+        links.forEach(link => {
+            link.addEventListener('click', function () {
+
+                links.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

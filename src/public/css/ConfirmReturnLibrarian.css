@@ -1,0 +1,53 @@
+#main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+
+.Transaction {
+  margin-top: 80px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  border: 4px double #b5f6ff;
+  border-radius: 9px;
+  padding: 18px;
+  background-color: white;
+  padding: 20px;
+  height: 440px;
+  margin-left: 220px;
+  width: 60%;
+  position: relative; }
+
+.list-group span {
+  font-weight: bold;
+  color: #001aff; }
+
+.button-confirm i {
+  margin-right: 10px; }
+
+.button-confirm:hover {
+  color: #A4E0D5;
+  border: 2px solid #A4E0D5;
+  background-color: #FFFCF0; }
+
+.Confirm {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 9px;
+  margin-bottom: 12px; }
+
+.button-confirm {
+  font-weight: bold;
+  background-color: #07bb9a;
+  font-size: 15px;
+  padding: 8px;
+  border: none;
+  border-radius: 15px;
+  color: white; }
+
+.Transaction li {
+  border: none; }
+
+.nav-link.active {
+  color: coral; }

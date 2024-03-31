@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/History.css">
+    <title>History</title>
+
+</head>
+
+<body>
+    <div id="main">
+
+        {{#each data}}
+        {{!-- {{#if checkState this.STATE}} --}}
+        <div class="list-container">
+            {{!-- <div class="book">
+                <img src="/{{this.PATHIMAGE}}">
+                <div class="transaction_information">
+                    <div class="information-status"><span class="return">Returned </span> </div>
+                    <ul>
+                        <li class="information">Transaction ID: <span class="detail">T0001</span></li>
+                        <li class="information">Book: <span class="detail">Obama</span> </li>
+                        <li class="information">Price: <span class="detail">20000 VND </span> </li>
+                        <li class="information">Borrow Date: <span class="detail">21-3-2021</span> </li>
+                        <li class="information">Return Date: <span class="detail">4-4-2022</span> </li>
+                    </ul>
+                    <div class="button">
+                        <button class="borrow-again"><i class="fa fa-shopping-basket"></i> Borrow Again</button>
+                    </div>
+                </div>
+            </div> --}}
+            {{!-- {{/if}} --}}
+            <div class="book">
+                <img src="/{{this.PATHIMAGE}}">
+                <div class="transaction_information">
+                    <div class="information-status"><span class="borrowing">{{this.STATE}} </span> </div>
+                    <ul>
+                        <li class="information">Transaction ID: <span class="detail">{{this.TID}}</span></li>
+                        <li class="information">Book: <span class="detail">{{this.TITTLE}}</span> </li>
+                        <li class="information">Price: <span class="detail">{{this.CURRENTPRICE}} $ </span> </li>
+                        <li class="information">Borrow Date: <span class="detail">{{this.BORROWEDDATE}}</span> </li>
+                        <li class="information">Return Date: <span class="detail">{{this.RETURNINGDATE}}</span> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+
+    </div>
+
+
+    <script>
+
+    </script>
+</body>
+
+</html>

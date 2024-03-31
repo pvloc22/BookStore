@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/AdminViewProfileLibrarian.css">
+
+    <title>Admin view profile librian</title>
+
+</head>
+
+<body>
+    <div id="main">
+        <div class="information-container">
+            <div class="information">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-light">First name: <span>Nguyễn Quốc</span></li>
+                    <li class="list-group-item list-group-item-light">Last name: <span>Aki </span></li>
+                    <li class="list-group-item list-group-item-light">Gender: <span>Male</span></li>
+                    <li class="list-group-item list-group-item-light">Phone number: <span>67565658</span></li>
+                    <li class="list-group-item list-group-item-light">Address: <span>7 NVC</span></li>
+                    <li class="list-group-item list-group-item-light">Bank account: <span>8982948</span></li>
+                    <li class="list-group-item list-group-item-light">Bank name: <span>Teckcombank</span></li>
+                    <li class="list-group-item list-group-item-light">Department: <span>A</span></li>
+            </div>
+            <div class="button-update-infor">
+                <button class="button-update"><i class="fas fa-edit"></i>Update information</button>
+            </div>
+            <div class="button-change-pass">
+                <button class="button-change"><i class="fa fa-key icon"></i> Change password</button>
+            </div>
+        </div>
+    </div>
+        <script>
+        const links = document.querySelectorAll('.nav-link');
+        links.forEach(link => {
+        link.addEventListener('click', function() {
+
+          links.forEach(link => link.classList.remove('active'));
+          this.classList.add('active');
+          });
+      });
+    </script>
+</body>
+
+</html>

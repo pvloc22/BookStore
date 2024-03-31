@@ -1,0 +1,149 @@
+@charset "UTF-8";
+main {
+  display: flex;
+  flex-direction: column; }
+
+/*thanh search trong main*/
+main form {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  margin-right: 30px; }
+
+form.form-search input[type=text] {
+  padding: 10px;
+  font-size: 24px;
+  border: 1px solid grey;
+  font-style: italic;
+  font-weight: 500;
+  float: left;
+  width: 72%;
+  background-color: #FFFAF0; }
+
+form.form-search button {
+  float: left;
+  width: 7%;
+  max-width: 6%;
+  padding: 10px;
+  background-color: #6FBFF1;
+  color: white;
+  font-size: 24px;
+  border: 1px solid grey;
+  border-left: none;
+  /* Prevent double borders */
+  cursor: pointer;
+  border-top-right-radius: 22px;
+  border-bottom-right-radius: 22px; }
+
+/* a->z z->a */
+.select-type select {
+  border-top-left-radius: 10px;
+  /* Độ cong góc trái trên của select */
+  border-bottom-left-radius: 10px;
+  /* Độ cong góc dưới trái của select */
+  /* Các thuộc tính khác cho viền và nền của select */
+  border: 1px solid #ccc;
+  padding: 5px;
+  background-color: #fff; }
+
+#type {
+  background-color: #6FBFF1;
+  color: khaki;
+  font-weight: bold;
+  font-size: 20px; }
+
+.select-type select {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  border: 1px solid #ccc;
+  padding: 15px; }
+
+.select-type {
+  position: relative;
+  display: inline-block;
+  margin-left: 80px; }
+
+.book {
+  padding-top: 12px;
+  padding-left: 2px;
+  padding-right: 2px;
+  border: 5px double #FF9356;
+  border-radius: 17px;
+  margin-top: 21px;
+  margin-left: 12px;
+  margin-right: 16px;
+  background-color: white;
+  /* height: 366px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align:justify; */ }
+
+/* danh sách các ô */
+.list-book {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 7px;
+  padding-right: 7px; }
+
+.list-book img {
+  width: 10em;
+  height: 14em; }
+
+/* các ô chứa sách */
+.book-block {
+  border-radius: 7px;
+  background-color: #b3e6f5;
+  margin-left: 5px;
+  margin-bottom: 8px;
+  margin-top: 7px;
+  display: flex;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  flex-direction: column; }
+
+.book-block:hover {
+  border: 6px solid coral;
+  border-radius: 6px; }
+
+/*chứa thông tin tên sách + tác giả */
+.book-detail {
+  display: flex;
+  justify-content: center; }
+
+/*chứa thông tin tên sách + tác giả */
+.book-information {
+  width: 160px;
+  /* Set the width of the book-detail container */ }
+
+.book-detail {
+  /* display: flex;
+  justify-content: center; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  /* Force the text to occupy the full width of the container */ }
+
+/* Tooltip style */
+.book-detail:hover {
+  position: relative; }
+
+.book-detail:hover::before {
+  content: attr(data-title);
+  position: absolute;
+  top: -30px;
+  left: 0;
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  white-space: nowrap;
+  z-index: 1; }
+
+.select-booktype {
+  margin-top: 51px;
+  margin-left: 12px; }
+
+.select-booktype select {
+  width: 12%; }

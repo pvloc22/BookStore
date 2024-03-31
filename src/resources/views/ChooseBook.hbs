@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/ChooseBook.css">
+    <title>Choose Book</title>
+
+</head>
+
+<body>
+    <div id="main">
+        <div class="book">
+            <div class="book-choose">
+                <img src="/{{data.PATHIMAGE}}">
+                <div class="button-add-to-interesting-book">
+                    <button class="button-like" onclick="toggleLike()" id="likeButton"><i id="heartIcon"
+                            class="fa fa-heart"></i> </button>
+                </div>
+            </div>
+            <div class="book-information">
+                <ul class="list-group">
+                    <li id="getfa"
+                        class="{{favorites.UID}} {{favorites.BID}} {{URL_AUTH.pass}} list-group-item list-group-item-light">
+                        Title: <span>{{data.TITTLE}}</span></li>
+                    <li class="list-group-item list-group-item-light">Author: <span>{{data.AUTHOR}}</span></li>
+                    <li class="list-group-item list-group-item-light">Publishing Year:
+                        <span>{{data.PUBLISHINGYEAR}}</span>
+                    </li>
+                    <li class="list-group-item list-group-item-light">Genre: <span id="genre">{{data.GENRE}}</span></li>
+                    <li class="list-group-item list-group-item-light">Language: <span>{{data.LANGUAGE_BOOK}}</span></li>
+                    <li class="list-group-item list-group-item-light">Has left: <span>{{data.HASLEFT}}</span></li>
+                    <li class="list-group-item list-group-item-light">Place: <span>Department A- Shelf C04</span></li>
+                    <li class="list-group-item list-group-item-light">Price: <span>{{data.PRICE}}$</span></li>
+                    <li class="list-group-item list-group-item-light">Routine: <span>{{data.DURATION}} days</span></li>
+                </ul>
+            </div>
+            <div class="button-add-to-payment">
+                <button class="button-add-to-cart" onclick="f_addToCash()"> <i class="fa fa-shopping-basket"></i><span
+                        class="add-to-cart">Add
+                        to cart</span> </button>
+            </div>
+        </div>
+    </div>
+    <div class="book-suggest">
+        <div class="suggest">
+            <h5>Suggestion</h5>
+        </div>
+        <div id="list-book">
+        </div>
+    </div>
+    <script>
+
+
+
+        function postFavoriteBook(UID, BID) {
+            const dataObj = {
+                UID: UID,
+                BID: BID
+            }
+            const options = {
+                method: 'POST',
+                headers: {
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataObj)
+            }
+            const URL = '/home/' + BID
+            return fetch(URL, options)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.err) alert('Successfully deleted book from favorites')
+                    else {
+                        alert('Successfully added book to favorites')
+                    }
+                })
+        }
+
+
+        function toggleLike() {
+            var likeButton = document.getElementById("likeButton");
+            var heartIcon = document.getElementById("heartIcon");
+
+            var element = document.getElementById('getfa')
+            const _classList = element.classList;
+            const classArray = Array.from(_classList)
+
+            if (likeButton.classList.contains("liked")) {
+                likeButton.classList.remove("liked");
+                heartIcon.classList.remove("fa-heart-broken");
+                likeButton.innerHTML = '<i id="heartIcon" class="fas fa-heart"></i>';
+            } else {
+                likeButton.classList.add("liked");
+                heartIcon.classList.add("fa-heart-broken");
+                likeButton.innerHTML = '<i id="heartIcon" class="fas fa-heart-broken"></i>';
+            }
+            postFavoriteBook(classArray[0], classArray[1])
+        }
+
+
+
+        function postBookToCash(UID, BID) {
+            const dataObj = {
+                UID: UID,
+                BID: BID
+            }
+            const options = {
+                method: 'POST',
+                headers: {
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataObj)
+            }
+            const URL = '/Payment/addToCash'
+            fetch(URL, options)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.err) alert('The book already exists in the cart')
+                    else {
+                        alert('Successfully added the book to the cart')
+                    }
+                })
+        }
+
+        function f_addToCash() {
+
+            postBookToCash(classArray[0], classArray[1])
+        }
+
+        function fetch_filter(value_genre, token) {
+
+            const url = '/home/filterGenre/' + value_genre
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.err) window.location.href('/erro')
+                    else {
+                        console.log(data.data)
+                        showList(data.data, token)
+                    }
+                })
+        }
+
+        function showList(data, token) {
+            //display
+            if (typeof data === 'object' && data !== null) {
+                const boxes = document.querySelectorAll('.book-block');
+                boxes.forEach(box => {
+                    box.remove();
+                })
+                for (let i of data) {
+                    var list_book_container = document.getElementById('list-book')
+                    var container = document.createElement('div');
+                    container.className = "BookImage"
+
+                    var tag_a = document.createElement('a')
+                    tag_a.href = '/home/' + i.BID + '/' + token
+
+                    var tag_img = document.createElement('img')
+                    tag_img.src = '/' + i.PATHIMAGE
+
+                    tag_a.appendChild(tag_img)
+                    container.appendChild(tag_a)
+                    list_book_container.appendChild(container)
+                }
+            }
+        }
+
+        var element = document.getElementById('getfa')
+        var _classList = element.classList;
+        var classArray = Array.from(_classList)
+        var genre = document.getElementById('genre').innerText
+        fetch_filter(genre, classArray[2])
+
+
+
+
+    </script>
+</body>
+
+</html>

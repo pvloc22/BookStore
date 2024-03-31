@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/UpdateBookLibrarian.css">
+    <title>update book librian</title>
+
+</head>
+
+<body>
+    <div id="main">
+        <form id="updateBook-form" class="{{data.BID}}">
+
+
+            <div class="form-group">
+                <label for="input-bookname">Name book</label>
+                <input type="text" class="form-control" id="input-bookname" name="bookname" value="{{data.TITTLE}}">
+            </div>
+
+            <div class="form-group">
+                <label for="input-author">Author</label>
+                <input type="text" class="form-control" id="input-author" name="author" value="{{data.AUTHOR}}">
+            </div>
+
+            <div class="form-group">
+                <label for="input-publishingyear">Publishing year</label>
+                <input type="text" class="form-control" id="input-publishingyear" name="publishingyear"
+                    value="{{data.PUBLISHINGYEAR}}">
+            </div>
+            <div class="form-group">
+                <label for="input-hasleft">Has left</label>
+                <input type="text" class="form-control" id="input-hasleft" name="hasleft" value="{{data.HASLEFT}}">
+            </div>
+            <div class="form-group">
+                <label for="input-price">Price</label>
+                <input type="text" class="form-control" id="input-price" name="price" value="{{data.PRICE}}">
+            </div>
+            <div class="form-group">
+                <label for="input-language">Language</label>
+                <input type="text" class="form-control" id="input-language" name="language" value="{{data.LANGUAGE_BOOK}}">
+            </div>
+
+
+            <div class="form-group">
+                <label for="input-routine">Routine</label>
+                <input type="text" class="form-control" id="input-routine" name="routine" value="{{data.DURATION}}">
+            </div>
+            <div class="form-group">
+                <label for="input-PAGES">Pages</label>
+                <input type="text" class="form-control" id="input-routine" name="pages" value="{{data.PAGES}}">
+            </div>
+            <div class="form-group">
+                <label for="input-genre">Genre</label>
+                <select class="select-genre" name="genre">
+                    <option value="{{data.GENRE}}"> {{data.GENRE}}</option>
+                    <option value="History">History</option>
+                    <option value="Physique">Physique</option>
+                    <option value="Social">Social</option>
+                    <option value="Chemistry">Chemistry</option>
+                </select>
+            </div>
+
+            <div class="update">
+                <button  class="button-update"><i class="fa fa-edit"></i> Update </button>
+            </div>
+
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById('updateBook-form')
+        form.addEventListener('submit', event => {
+            event.preventDefault()
+            const formData = new FormData(form)
+            const data = Object.fromEntries(formData)
+            const BID =  form.className
+            data.bid = BID
+            const options = {
+                method: 'PUT',
+                headers: {
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }
+            const URL = '/UpdateBookLibrarian/updateBook'
+            fetch(URL, options)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.err) alert(' error update information book!')
+                    else {
+                        alert('book successfully update')
+                        location.reload();
+                    }
+                })
+
+        })
+    </script>
+</body>
+
+</html>

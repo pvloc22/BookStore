@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/DashboardLibrarian.css">
+
+    <title>Dashboard librarian</title>
+</head>
+
+<body>
+    <div id="main">
+
+        <form class="form-search">
+            <div class="select-type">
+                <select id="type" class="{{data.TID}}">
+                    <option value="A-Z">A->Z</option>
+                    <option value="Z-A">Z->A</option>
+                </select>
+
+            </div>
+            <input type="text" placeholder="Search by name" name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+
+        <div class="table_heading">
+            <div class="table-data">Transaction ID</div>
+            <div class="table-data">Client ID</div>
+            <div class="table-data">Phone number</div>
+            <div class="table-data">Total Price</div>
+            <div class="table-data">Borrow Date</div>
+            <div class="table-data">Return Date</div>
+            <div class="table-data">Quantity</div>
+        </div>
+
+        <div class="list-transaction">
+            {{#each data}}
+            <div class="container-transaction">
+                <a href="/DashboardLibrarian/ConfirmReturnLibrarian/{{this.TID}}/{{../URL_AUTH.pass}}">
+                    <div class="table-row">
+                        <div class="table-data"><span style="color: blue; font-weight: bold;">{{this.TID}}</span></div>
+                        <div class="table-data">{{this.CLI_ID}}</div>
+                        <div class="table-data">{{this.PHONENUMBER}}</div>
+                        <div class="table-data">{{this.TOTALPRICE}} $</div>
+                        <div class="table-data">{{this.BORROWEDDATE}}</div>
+                        <div class="table-data">{{this.RETURNINGDATE}}</div>
+                        <div class="table-data">{{this.QUANTITY}}</div>
+                    </div>
+                </a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <script>
+        function showListBook(data, token) {
+            //display
+            if (typeof data === 'object' && data !== null) {
+                const boxes = document.querySelectorAll('.container-transaction');
+                boxes.forEach(box => {
+                    box.remove();
+                })
+                for (let i of data) {
+                    var list_book_container = document.getElementById('list-transaction')
+                    var container = document.createElement('div');
+                    container.className = "container-transaction"
+
+                    var tag_a = document.createElement('a')
+                    tag_a.href = '/home/' + i.TID + '/' + token
+
+                    var tag_div_infoTransaction = document.createElement('div')
+                    tag_div_infoTransaction.className = 'table-row'
+
+                    var tag_div_tid = document.createElement('div')
+                    tag_div_tid.className = "table-data"
+                    var tag_span_tid = document.createElement('span')
+                    tag_span_tid.innerText = i.TID
+                    tag_span_tid.style = "color: blue; font-weight: bold;"
+                    tag_div_tid.appendChild(tag_span_tid)
+
+                    var tag_div_CLI_ID = document.createElement('div')
+                    tag_div_CLI_ID.className = "table-data"
+                    tag_div_CLI_ID.innerText = i.CLI_ID
+
+                    var tag_div_PHONENUMBER = document.createElement('div')
+                    tag_div_PHONENUMBER.className = "table-data"
+                    tag_div_PHONENUMBER.innerText = i.PHONENUMBER
+
+                    var tag_div_TOTALPRICE = document.createElement('div')
+                    tag_div_TOTALPRICE.className = "table-data"
+                    tag_div_TOTALPRICE.innerText = i.TOTALPRICE
+
+                    var tag_div_BORROWEDDATE = document.createElement('div')
+                    tag_div_BORROWEDDATE.className = "table-data"
+                    tag_div_BORROWEDDATE.innerText = (i.BORROWEDDATE)
+
+                    var tag_div_RETURNINGDATE = document.createElement('div')
+                    tag_div_RETURNINGDATE.className = "table-data"
+                    tag_div_RETURNINGDATE.innerText = i.RETURNINGDATE
+
+                    var tag_div_QUANTITY = document.createElement('div')
+                    tag_div_QUANTITY.className = "table-data"
+                    tag_div_QUANTITY.innerText = i.QUANTITY
+
+
+                    tag_div_infoTransaction.appendChild(tag_div_tid)
+                    tag_div_infoTransaction.appendChild(tag_div_CLI_ID)
+                    tag_div_infoTransaction.appendChild(tag_div_PHONENUMBER)
+                    tag_div_infoTransaction.appendChild(tag_div_TOTALPRICE)
+                    tag_div_infoTransaction.appendChild(tag_div_BORROWEDDATE)
+                    tag_div_infoTransaction.appendChild(tag_div_RETURNINGDATE)
+                    tag_div_infoTransaction.appendChild(tag_div_QUANTITY)
+
+
+                    container.appendChild(tag_a)
+                    container.appendChild(tag_div_infoTransaction)
+
+                    list_book_container.appendChild(container)
+                }
+            }
+        }
+// var getToken = document.getElementById('type').className
+// var data_Object_global = null
+
+// //Run
+// // Onclick form
+// const form = document.querySelector('form')
+// form.addEventListener('submit', async event => {
+//     event.preventDefault();
+//     const formData = new FormData(form);
+//     const data = Object.fromEntries(formData)
+
+//     fetch_getBook(data)
+//         .then(data => {
+
+//             showListBook(data, getToken)
+//             data_Object_global = data
+//         })
+
+
+// })
+
+    </script>
+
+</body>
+
+</html>
